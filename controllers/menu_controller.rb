@@ -1,5 +1,7 @@
 require_relative '../models/address_book'
 
+
+
  class MenuController
    attr_reader :address_book
 
@@ -14,7 +16,8 @@ require_relative '../models/address_book'
      puts "2 - Create an entry"
      puts "3 - Search for an entry"
      puts "4 - Import entries from a CSV"
-     puts "5 - Exit"
+     puts "5 - View Entry Number n"
+     puts "6 - Exit"
      print "Enter your selection: "
 
      # #3
@@ -38,6 +41,9 @@ require_relative '../models/address_book'
        read_csv
        main_menu
      when 5
+        system "clear"
+        view_entry_number
+     when 6
        puts "Good-bye!"
        exit(0)
      else
@@ -45,6 +51,21 @@ require_relative '../models/address_book'
        puts "Sorry, that is not a valid input"
        main_menu
      end
+   end
+
+   def view_entry_number
+      system "clear"
+      print "Lookup Entry Number:"
+      entry_number = gets.chomp.to_i
+      if entry_number > address_book.entries.length || entry_number <= 0
+        puts "Sorry, that is not a valid input. Try again!"
+        sleep 2
+        view_entry_number
+      else entry_number <= address_book.entries.length
+        puts address_book.entries[entry_number - 1]
+        puts ""
+        sleep 2
+        puts main_menu
    end
 
    def view_all_entries
@@ -106,4 +127,5 @@ require_relative '../models/address_book'
      end
    end
 
+ end
  end

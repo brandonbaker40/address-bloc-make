@@ -4,7 +4,7 @@ require_relative 'entry'
     attr_reader :entries
 
     def initialize
-      @entries = []
+      @entries = [ ]
     end
 
   def remove_entry(name, phone_number, email)
