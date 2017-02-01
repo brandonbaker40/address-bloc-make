@@ -75,4 +75,8 @@ require "csv"
       return nil
    end
 
+   def destroy_everything
+     @entries = [ ]
+   end
+
 end

@@ -234,4 +234,16 @@ require_relative '../models/address_book'
     end
   end
 #---- search assignment ends -----
+describe "#destroy_everything" do
+  it "should delete all entries" do
+    book.add_entry("Coco", "555-555-2017", "coco@blocmail.com")
+    book.add_entry("Coco", "555-555-2017", "coco@blocmail.com")
+    book.add_entry("Coco", "555-555-2017", "coco@blocmail.com")
+
+    book.destroy_everything
+    expect(book.entries.size).to eq 0
+
+    end
+  end
+
 end
